@@ -1,0 +1,62 @@
+@startuml Class_Diagramm
+
+abstract "Document" as Document{
+    id : Int
+    date : Date
+    deposit_date : Date 
+    description : String? 
+}
+
+abstract BilingDoc {
+    ttcAmount : Float 
+    htAmount : Float 
+}
+
+class InvoiceDoc 
+
+enum InvoiceDocType {
+    CLIENT
+    SUPPLIER
+}
+
+class OrderDoc 
+
+enum OrderDocType {
+    DELIVERY
+    PURCHASE
+}
+
+class EmployeeDoc
+
+enum EmployeeDocType {
+    PAYSLIP
+    ID_CARD
+    VITAL_CARD
+    OTHER
+}
+
+class AdministrativeDoc {
+    title : String
+}
+
+enum EDocumentType{
+    INVOICE
+    ORDER
+    ADMINISTRATIVE
+    EMPLOYEE
+    OTHER
+}
+
+Document -> EDocumentType
+Document <|-- BilingDoc
+Document <|-- EmployeeDoc
+Document <|-- AdministrativeDoc
+
+BilingDoc <|-- InvoiceDoc
+BilingDoc <|-- OrderDoc
+
+InvoiceDoc -> InvoiceDocType
+OrderDoc -> OrderDocType
+EmployeeDocType <- EmployeeDoc
+
+@enduml
