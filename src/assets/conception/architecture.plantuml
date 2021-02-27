@@ -1,0 +1,22 @@
+@startuml
+skinparam NodeBackgroundColor DeepSkyBlue 
+
+title MaryApp Architecture
+
+/' Nodes '/
+node  AppModule #LightSeaGreen
+node CoreModule #IndianRed
+note bottom : Components, Button, Pipe, Directives...
+node SharedModule #MediumPurple
+note bottom : Service, Intercepteurs, Guards
+node FeatureModule #LightGoldenRodYellow { 
+    node GEDModule
+}
+
+/' Relations '/
+AppModule --> CoreModule
+AppModule --> SharedModule
+AppModule --> FeatureModule
+
+
+@enduml

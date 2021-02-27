@@ -1,8 +1,33 @@
 @startuml Class_Diagramm
+skinparam roundcorner 20
+skinparam class {
+BackgroundColor AliceBlue
+ArrowColor DodgerBlue
+BorderColor AntiqueWhite
+}
+skinparam stereotypeCBackgroundColor Chartreuse
+skinparam stereotypeABackgroundColor DeepSkyBlue
+skinparam stereotypeEBackgroundColor DarkOrchid
+
+title Modèle de données
+legend Ce modèle permet de décrire la relation entre les données utilisées dans notre application
+
+class User {
+    firstname : String
+    lastname : String
+    email : String
+    
+}
+
+enum ERole{
+    ADMIN
+    EMPLOYEE
+}
 
 abstract "Document" as Document{
     id : Int
     date : Date
+    deposit_author : User
     deposit_date : Date 
     description : String? 
 }
@@ -46,6 +71,9 @@ enum EDocumentType{
     EMPLOYEE
     OTHER
 }
+
+User "*" -- "1" ERole
+Document -> User
 
 Document -> EDocumentType
 Document <|-- BilingDoc
