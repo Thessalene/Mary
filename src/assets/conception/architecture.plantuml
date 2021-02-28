@@ -9,14 +9,18 @@ node CoreModule #IndianRed
 note bottom : Components, Button, Pipe, Directives...
 node SharedModule #MediumPurple
 note bottom : Service, Intercepteurs, Guards
-node FeatureModule #LightGoldenRodYellow { 
-    node GEDModule
+node GEDModule #LightGoldenRodYellow {
+    node SearchModule
+    node DepositModule
+    node SharedGEDModule {
+        [DatePipe]
+    }
 }
 
 /' Relations '/
 AppModule --> CoreModule
 AppModule --> SharedModule
-AppModule --> FeatureModule
+AppModule --> GEDModule
 
 
 @enduml
